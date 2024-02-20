@@ -15,6 +15,7 @@ const DataFetcher = () => {
   const [rssi, setRssi] = useState("");
   const [signalStrength, setSignalStrength] = useState("");
   const [showRSSI, setShowRSSI] = useState(false); // State to control RSSI visibility
+  const [batteryVoltage, setBatteryVoltage] = useState(""); // State to store the battery voltage [V]
   const [pressCount, setPressCount] = useState(0); // State to count the button presses
 
   const classifyRSSI = (rssi) => {
@@ -33,6 +34,7 @@ const DataFetcher = () => {
         setTemperature(formattedTemp);
         setRssi(data.RSSI);
         setSignalStrength(classifyRSSI(data.RSSI));
+        setBatteryVoltage(data.vbat);
       } else {
         console.log("Data is not in the expected format:", data);
       }
@@ -60,7 +62,7 @@ const DataFetcher = () => {
       <Text style={styles.text}>Temperature: {temperature} °F</Text>
       {showRSSI && <Text style={styles.text}>RSSI: {rssi}</Text>}
       <Text style={styles.text}>Signal Strength: {signalStrength}</Text>
-
+      <Text style={styles.text}>Battery Voltage: {batteryVoltage} V</Text>
       <TouchableOpacity onPress={fetchData} style={styles.button}>
         <Text style={styles.buttonText}>Get Temperature</Text>
       </TouchableOpacity>

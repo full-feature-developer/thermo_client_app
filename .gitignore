@@ -7,6 +7,8 @@ node_modules/
 .expo/
 dist/
 web-build/
+package.json
+package-lock.json
 
 # Native
 *.orig.*
@@ -29,7 +31,7 @@ yarn-error.*
 *.pem
 
 # local env files
-.env*.local
+.env
 
 # typescript
 *.tsbuildinfo
